@@ -1,0 +1,31 @@
+<!doctype>
+<html>
+<head></head>
+<body>
+<div>
+    <button onclick="startAudio()">Start</button>
+    <button onclick="endAudio()">Stop</button>
+</div>
+<script>
+
+
+    const startAudio = function() {
+        const context = new AudioContext();
+    let oscillatorAudioNode;
+        // allow the user to play sound
+        context.resume();
+        if(oscillatorAudioNode) oscillatorAudioNode.stop();
+        // create an oscillator node
+        oscillatorAudioNode = context.createOscillator();
+        // connect it to the destination
+        oscillatorAudioNode.connect(context.destination);
+        // start the oscillator
+        oscillatorAudioNode.start();
+        oscillatorAudioNode.stop(.1);
+        //endAudio();
+    }
+    
+</script>
+
+</body>
+</html>

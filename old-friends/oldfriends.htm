@@ -1,0 +1,125 @@
+
+<html>
+
+
+
+<head>
+  <style>
+    .button{
+      font-size:4vw;
+    }
+    
+  </style>
+<script>
+
+function showSet1()
+{
+
+	var thescreen = document.getElementById("myscreen");
+	thescreen.src = "https://www.youtube.com/embed/MakyZwVEb0E?autoplay=1&showinfo=0&modestbranding=1&mute=1";
+  
+  var mystory = document.getElementById("story");
+        mystory.innerHTML = "You see a horse. He appears to be happy even though it's raining.  You wonder if he's friendly.  He can't do much for you right now.  All you care about is getting something to eat.";
+	
+}	
+
+function screen1()
+{
+  var thescreen = document.getElementById("myscreen");
+        	thescreen.src = "https://www.youtube.com/embed/V4tcctmaYPE?autoplay=1&showinfo=0&modestbranding=1&mute=1";
+          
+        var mycommands = document.getElementById("commandset");
+        mycommands.style.display = "block";
+        
+        var ms = document.getElementById("mysubscribe");
+        ms.style.display = "none";
+        
+        var mystory = document.getElementById("story");
+        mystory.innerHTML = "It's been raining forever.  It seems like forever since you've eaten.  You're locked out and don't know what to do.  You can see the rain drops glistening on the deck as your stomach continues to churn away.  You've got to get something to eat before you pass out.  What do you want to do?";
+}
+
+function mySubscribe() {
+  var win = window.open("https://www.youtube.com/channel/UC-Rx64xwAzxLDdnxAb4pWqA?sub_confirmation=1", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=0,left=0,width=400,height=400");
+  var xtime= 0;
+  var timer = setInterval(function() { 
+    if(win.closed) {
+        clearInterval(timer);
+        alert('lets do this');
+        var thescreen = document.getElementById("myscreen");
+        	thescreen.src = "https://www.youtube.com/embed/V4tcctmaYPE?autoplay=1&showinfo=0&modestbranding=1&mute=1";
+          
+        var mycommands = document.getElementById("commandset");
+        mycommands.style.display = "block";
+        
+        var ms = document.getElementById("mysubscribe");
+        ms.style.display = "none";
+        
+        var mystory = document.getElementById("story");
+        mystory.innerHTML = "It's been raining forever.  It seems like forever since you've eaten.  You're locked out and don't know what to do.  You can see the rain drops glistening on the deck as your stomach continues to churn away.  You've got to get something to eat before you pass out.  What do you want to do?";
+    }
+    else
+    {
+      xtime += 1;
+      if (xtime >=5)
+      {
+        if (win.closed)
+        {
+         
+        }else{
+           win.close();
+        }
+      }
+    }
+}, 1000);
+
+}
+
+
+function mySubscribe2()
+{
+  
+  // Store
+localStorage.setItem("subscribed", "yes");
+
+// Retrieve
+/*
+document.getElementById("result").innerHTML = localStorage.getItem("subscribed");
+*/
+
+  mySubscribe();
+}
+</script>
+</head>
+
+<body>
+<h1>Old Friends</h1>
+
+<iframe id = "myscreen" width="400" height="225" src="https://www.youtube.com/embed/R4nmr52A1fw?showinfo=0&modestbranding=1&autoplay=1&mute=1" type="video/mp4">
+</iframe><br>
+<div id = "story" style="font-size:5vw">
+It's really raining hard out here.  You're looking forward to meeting up with your old friends.  You can't believe it's been over 20 years.  Well, let's get out of the rain.  Shall we?  Click Subscribe Now and Play then return to game.
+</div><br><br>
+<!--
+<a href = "https://www.youtube.com/channel/UC-Rx64xwAzxLDdnxAb4pWqA?sub_confirmation=1">Subscribe Now and Play!</a>
+-->
+<button id = "mysubscribe" onclick="mySubscribe2()">Subscribe Now And Play</button>
+<br><br>
+<div id="commandset" style="font-size:2vw;display:none">
+<button class="button" onclick="showSet1()">Look around</button><br><br>
+
+<button class="button">Yell</button><br><br>
+<button class="button">Go To Sleep</button><br><br>
+</div>
+
+<script>
+  var issubscribed =  localStorage.getItem("subscribed");
+  if (issubscribed == "yes")
+  {
+    alert("ok");
+    screen1();
+  }
+</script>
+
+</body>
+</html>
+

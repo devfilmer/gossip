@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+
+<title>Rhinestone</title>
+
+<style> 
+
+
+
+    .bigcontainer{
+
+        width: 440px;
+
+        
+
+        position: relative;
+
+        margin: 20px;
+
+        background-color: #00FF3D;
+
+    }
+
+
+
+    .container{
+
+        width: 400px;
+
+        height: 300px;
+
+        position: relative;
+
+        margin: 20px;
+
+        
+
+    }
+
+    .enemy{
+
+        width: 100%;
+
+        height: 100%;            
+
+        position: absolute;
+
+        top: 0;
+
+        left: 0;
+
+        background-repeat: no-repeat;
+
+        /*opacity: 0.8;*/  /* for demo purpose  */
+
+    }
+	
+	#encounter
+	{
+		position: absolute;
+	}
+
+    .hero{
+
+        z-index: 9;
+
+        margin: 20px; /* for demo purpose  */
+
+    }
+
+</style>
+
+      <script>
+
+   function moveGuy()
+
+         {
+			 var elem = document.getElementById("encounter");   
+  var pos = 0;
+  var id = setInterval(frame, 10);
+  function frame() {
+    if (pos == 350) {
+      clearInterval(id);
+    } else {
+      pos++; 
+      elem.style.top = pos + 'px'; 
+      elem.style.left = pos + 'px'; 
+    }
+  }
+      
+          }
+
+
+         
+
+    </script> 
+	<script>moveGuy();</script>
+ 
+
+
+
+
+
+</head>
+
+<body>
+
+    <div class = "bigcontainer">
+
+    <div><h1>Rhinestone</h1><br>
+
+    <div class="container">
+
+        <div class="enemy" style="background-image: url('forest2.png');"></div>
+
+        <div id ="mychar" class="enemy hero"><img id="encounter" src="wizard2.png"/></div>
+
+    </div>
+
+    <div id = "story" style="width:400px"><h3>You're within an enchanted forest and encounter Maltizo the Evil Wizard.  What do you want to do?</h3></div><br>
+
+    <div id = "controls"><img src="run.png"/><img src="fight.png"/></div>
+
+
+
+    </div>
+
+
+
+
+
+</body>
+
+</html>

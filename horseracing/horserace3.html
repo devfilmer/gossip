@@ -1,0 +1,593 @@
+<!DOCTYPE html> 
+<html>
+	
+<head>
+	<script src = "_js/jquery3.js"></script>
+<link href="_css/main.css" rel="stylesheet">
+	
+	
+
+	</head>
+<body style="position: fixed; width: 100%; height: 100%; margin:0; background-color:black">
+		
+		
+	
+
+<div id="bet" style="display: none; position: absolute; width:96%; height: 80%"></div>
+<div id="page" onmousedown="return false" style="width: 100%; height: 80%">
+
+	<div id="top_bar" style="width:100%; height: 13%; background-color: saddlebrown; vertical-align: top"><img src="images/sam.png"  id ="sam" style="float:left; "/>
+		
+		<script>
+			
+		
+				
+		//alert(document.getElementById("gameView").offsetHeight);
+	document.getElementById("sam").style.width =  document.getElementById("top_bar").offsetHeight + "px";</script> 
+		
+		
+		<span id = "gametitle" style="font-size: 30px; color:white; vertical-align: top; display: inline-block">Camptown Races<br><div id = "horse"></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span id="money" style="margin-left: 30px; vertical-align: top; display: inline-block"></span><span id="betView" style="vertical-align: top; display: inline-block; margin-left: 30px"></span>
+	
+	<audio id="myAudio" controls autoplay style="float:right; vertical-align: text-top">
+
+  <source src="rise.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+	
+	</div>
+	<br><br>
+	<div id = "gameView" style="width:85%; height: 66%; background-color: black">
+	
+	</div>
+	<div style="width:100%; height: 11%; background-color: saddlebrown; vertical-align: bottom">
+	<h1>
+	<button id ="gobutton" onClick="startRace()" style="font-size: 40px">Go</button>
+	<!--<button onClick="reStartRace()" style="font-size: 40px">Play Again!</button>-->
+	<button id = "betbutton" onClick="setBet()" style="font-size: 40px">Place Bet</button>
+	</h1>
+	
+	
+	</div>
+	
+
+<!--
+<canvas id="myCanvas" width="240" height="297"
+style="border:1px solid #d3d3d3;">
+Your browser does not support the HTML5 canvas tag.
+</canvas>
+-->
+	
+</div>
+
+
+
+	
+	<script>
+		
+		/////// Lock orientation
+		/*
+	   document.getElementById("button").addEventListener("click", function() {
+  document.documentElement.requestFullScreen();
+  screen.orientation.lock("portrait-primary");
+
+ }, false);
+		*/
+		
+		
+		
+		
+		
+		
+		////////////////
+		var currentbet_value = 0;
+		var currenthorse = "";
+		var racing = false;
+		
+		function thousands_separators(num)
+		{
+    		var num_parts = num.toString().split(".");
+			num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    		return num_parts.join(".");
+  		}		
+		
+		function placeBet()
+		{
+			document.getElementById('bet').style.display = 'none';
+			var currentwallet = parseInt(money);
+			//var currentbet = parseInt(document.getElementById('amount').value);
+			
+			
+			var currentbets = document.getElementsByName('amount');
+            
+            for(var i = 0; i < currentbets.length; i++){
+               if(currentbets[i].checked){
+                  currentbet_value = currentbets[i].value;
+               }
+            }
+			
+			
+			if (currentbet_value > currentwallet)
+				{
+					var walletstatement = thousands_separators(currentwallet);
+					alert('You currently have $' + walletstatement + '.  You do not have enough money.');
+				}
+			else{
+				
+				alert('Your bet has been placed. Enjoy the race!');
+				updateBetPane(currentbet_value);
+				setHorse();
+			}
+		}
+		
+		
+		function selectHorse()
+		{
+			document.getElementById('bet').style.display = 'none';
+				var currenthorses = document.getElementsByName('horses');
+            
+            for(var i = 0; i < currenthorses.length; i++){
+               if(currenthorses[i].checked){
+                  currenthorse = currenthorses[i].value;
+               }
+            }
+			
+			
+			updateHorsePane(currenthorse);
+			
+			
+		}
+		
+		
+		function updateHorsePane(myhorse)
+		{
+			alert('ok, you have chosen ' + myhorse);
+			currenthorse = myhorse;
+			document.getElementById("horse").innerHTML = currenthorse;
+		}
+		
+		function updateBetPane(betnow)
+		{
+			
+			betpane = document.getElementById("betView");
+		betpane.style.fontSize = "30px";
+		betpane.style.color = "white";
+		betpane.style.fontWeight = "bold";
+		betpane.innerHTML = "";
+		betpane.interHTML += "<div style='position:relative; left: 30px; display:block'>";
+		betpane.innerHTML += "<span style='color:black; font-size: 30px'>Current Bet:<br></span>";
+		betpane.innerHTML += "<span id = 'showbet' style = 'color:black; font-size:30px'>";
+		betpane.innerHTML += "$";
+		betpane.innerHTML += thousands_separators(betnow);
+		betpane.innerHTML += "</span>";
+		betpane.interHTML += "</div>";
+			
+			
+		}
+		
+		
+		
+		function setBet()
+		{
+			
+			var myBet = document.getElementById("bet");
+			myBet.style.display = "block";
+			myBet.style.color = 'white';
+			myBet.style.fontSize = '30px';
+			myBet.style.backgroundColor = "green";
+			myBet.style.zIndex = 10;
+			//var panewidth = document.getElementById("gameView").offsetWidth * 0.8;
+			//myBet.style.width = panewidth;
+			myBet.style.position = "absolute";
+			myBet.style.textAlign = "center";
+			myBet.innerHTML = "";
+			myBet.innerHTML += "<br><img src='images/luther.png' width='20%'><br><div style='position:relative; text-align:left; width: 30%'><br>";
+			
+			myBet.innerHTML += "How Much Do You<br>Want To Bet?<br>";
+			myBet.innerHTML += "<input name ='amount' type ='radio' value = '1000' checked='checked'>&nbsp;&nbsp;&nbsp;1,000</input><br>";
+			myBet.innerHTML += "<input name ='amount' type ='radio' value = '5000'>&nbsp;&nbsp;&nbsp;5,000</input><br>";
+			myBet.innerHTML += "<input name ='amount' type ='radio' value = '10000'>&nbsp;&nbsp;&nbsp;10,000</input><br>";
+			myBet.innerHTML += "<input name ='amount' type ='radio' value = '20000'>&nbsp;&nbsp;&nbsp;20,000</input><br>";
+			myBet.innerHTML += "<input name ='amount' type ='radio' value = '100000'>&nbsp;&nbsp;&nbsp;100,000</input><br><br><input type = 'button' value='Submit' style='font-size: 40px' onclick='placeBet()'></input></div>";
+			myBet.style.top = "2%";
+			
+			
+			myBet.style.left = "2%"
+			
+		}
+		
+		function updateMoney(themoney)
+		{
+			
+			var moneypane = document.getElementById("money");
+		moneypane.style.fontSize = "30px";
+		moneypane.style.color = "white";
+		moneypane.style.fontWeight = "bold";
+		moneypane.innerHTML = "";
+		moneypane.interHTML += "<div style='position:relative; left: 30px'>";
+		moneypane.innerHTML += "<span style='color:black; font-size: 30px'>Current Wallet:<br></span>";
+		moneypane.innerHTML += "$";
+		moneypane.innerHTML += thousands_separators(themoney);
+		moneypane.interHTML += "</div>";
+		}
+		
+		
+		function setHorse()
+		{
+			
+			
+			var myBet = document.getElementById("bet");
+			myBet.style.display = "block";
+			myBet.style.color = 'white';
+			myBet.style.fontSize = '30px';
+			myBet.style.backgroundColor = "green";
+			myBet.style.zIndex = 10;
+			//var panewidth = document.getElementById("gameView").offsetWidth * 0.8;
+			//myBet.style.width = panewidth;
+			myBet.style.position = "absolute";
+			myBet.style.textAlign = "center";
+			myBet.innerHTML = "";
+			myBet.innerHTML += "<br><img src='images/luther.png' width='20%'><br><div style='position:relative; text-align:left; width: 30%'><br>";
+			
+			myBet.innerHTML += "Which Horse Do You <br>Want To Bet On?<br>";
+			myBet.innerHTML += "<input name ='horses' type ='radio' value = 'horse0' checked='checked'>&nbsp;&nbsp;&nbsp;Horse0</input><br>";
+			myBet.innerHTML += "<input name ='horses' type ='radio' value = 'horse1'>&nbsp;&nbsp;&nbsp;Horse1</input><br>";
+			myBet.innerHTML += "<input name ='horses' type ='radio' value = 'horse2'>&nbsp;&nbsp;&nbsp;Horse2</input><br>";
+			myBet.innerHTML += "<input name ='horses' type ='radio' value = 'horse3'>&nbsp;&nbsp;&nbsp;Horse3</input><br>";
+			myBet.innerHTML += "<input name ='horses' type ='radio' value = 'horse4'>&nbsp;&nbsp;&nbsp;Horse4</input><br>";
+			myBet.innerHTML += "<input name ='horses' type ='radio' value = 'horse5'>&nbsp;&nbsp;&nbsp;Horse5</input><br>";
+			myBet.innerHTML += "<br><br><input type = 'button' value='Submit' style='font-size: 40px' onclick='selectHorse()'></input></div>";
+			myBet.style.top = "2%";
+			
+			
+			myBet.style.left = "2%"
+		}
+		
+		
+		
+		/////////////////
+		
+		//set sound
+		sound = document.getElementById("myAudio");
+sound.currentTime = 0;
+sound.autoplay = true;
+sound.loop = true; //if you want it to restart playing automatically when it ends
+sound.play();
+	
+	//load money
+	var money = 20000;
+		
+		
+		updateMoney(money);
+		
+		//////
+		
+		var betpane = document.getElementById("betView");
+		betpane.style.fontSize = "30px";
+		betpane.style.color = "white";
+		betpane.style.fontWeight = "bold";
+		betpane.innerHTML = "";
+		betpane.interHTML += "<div style='position:relative; left: 30px; display:block'>";
+		betpane.innerHTML += "<span style='color:black; font-size: 30px'>Current Bet:<br></span>";
+		betpane.innerHTML += "<span id = 'showbet' style = 'color:black; font-size:30px'>";
+		betpane.innerHTML += "$";
+		betpane.innerHTML += thousands_separators(currentbet_value);
+		betpane.innerHTML += "</span>";
+		betpane.interHTML += "</div>";
+	
+	var mymove1;
+	var mymove2;
+	var mymove3;
+	var mymove4;
+	var mymove5;
+	var mymove6;
+	
+	for (x=0; x<6; x=x+1)
+		{
+	var horse = document.createElement("img");                 
+    horse.src = "horse3.gif";  
+	var horsewidth;
+	if (document.getElementById("gameView").offsetHeight>document.getElementById("gameView").offsetWidth)    {
+		
+		horsewidth = document.getElementById("gameView").offsetHeight/6;							
+		
+		}
+	else
+		{
+			horsewidth = document.getElementById("gameView").offsetHeight/6;
+		}
+	
+	horse.style.width = horsewidth + "px";
+	
+	horse.id = "horse" + x.toString();
+	//alert(horse.id);
+	horse.style.position = "relative";
+    document.getElementById("gameView").appendChild(horse); 
+	var abreak = document.createElement("br");
+	 document.getElementById("gameView").appendChild(abreak);
+			//alert(document.getElementById("gameView").offsetWidth);
+	//var xpos = parseInt(horse.style.left);
+		}
+		
+	/*
+	function disableScroll() { 
+    // Get the current page scroll position 
+    scrollTop = window.pageYOffset || document.documentElement.scrollTop; 
+    scrollLeft = window.pageXOffset || document.documentElement.scrollLeft, 
+  
+        // if any scroll is attempted, set this to the previous value 
+        window.onscroll = function() { 
+            window.scrollTo(scrollLeft, scrollTop); 
+        }; 
+} 
+  
+function enableScroll() { 
+    window.onscroll = function() {}; 
+} 	
+		
+	disableScroll();
+		*/
+		
+		
+		/*
+		function disableScroll() {
+document.body.style.overflow = 'hidden';
+document.querySelector('html').scrollTop = window.scrollY;
+}
+
+function enableScroll() {
+document.body.style.overflow = null;
+}
+		
+		disableScroll();
+		
+		*/
+		//////////////
+		
+		
+		// prevent scrolling from outside of input field
+$(document).on('touchstart', function(e) {
+    if (e.target.nodeName !== 'INPUT') {
+        e.preventDefault();
+    }
+});
+
+// prevent scrolling from within input field
+$(document).on('touchmove', function(e) {
+    if (e.target.nodeName == 'INPUT') {
+        e.preventDefault();
+    }
+});
+		
+		
+		
+		
+		
+		function noScroll()
+		{
+			
+			window.scrollTo(0,0);
+		}
+		
+		window.addEventListener("scroll",noScroll);
+	function reStartRace()
+		{
+			//stopRace();
+			document.getElementById("horse0").style.left = "0px";
+			document.getElementById("horse1").style.left = "0px";
+			document.getElementById("horse2").style.left = "0px";
+			document.getElementById("horse3").style.left = "0px";
+			document.getElementById("horse4").style.left = "0px";
+			document.getElementById("horse5").style.left = "0px";
+			
+			//startRace();
+			//alert("hey");
+			
+		}
+		
+	function resetTimers()
+		{
+			clearInterval(mymove1);
+			clearInterval(mymove2);
+			clearInterval(mymove3);
+			clearInterval(mymove4);
+			clearInterval(mymove5);
+			clearInterval(mymove6);
+		}
+	function stopRace(whowon)
+		{
+			resetTimers();
+			alert(whowon + " won the race!")
+			calcWinnings(whowon);
+		}
+	
+	function calcWinnings(whowon)
+		{
+			if (currenthorse == whowon)
+				{
+					/// Player has won... add their money
+					
+					money = parseInt(money) + parseInt(currentbet_value);
+					alert("You Won $"+ currentbet_value);
+					
+				}
+			else
+				{
+					/// Player has lost ... decrease money
+					
+					money = parseInt(money) - parseInt(currentbet_value);
+					alert("You Lost $" + currentbet_value);
+					if (money < 0)
+						{
+							money = 0;
+							alert("You're Broke!");
+						}
+				}
+			
+			updateMoney(money);
+			document.getElementById("gobutton").disabled = false;
+			document.getElementById("betbutton").disabled = false;
+		}
+		
+	function randomInteger(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+		
+    function startRace(){
+		
+		
+		
+		resetTimers();
+		
+		if (money <= 0)
+			{
+				
+				alert("Sorry Boss, You're Broke!");
+				
+			}
+		
+		else
+			{
+		
+		reStartRace();
+		
+		if (parseInt(currentbet_value) > parseInt(money)){
+			
+			alert ('If you stick with this bet, you could lose it all!');
+		}
+		
+		
+		document.getElementById("gobutton").disabled = true;
+		document.getElementById("betbutton").disabled = true;
+    alert("ready");
+	var xpos1 = horse.offsetLeft;
+	var xpos2 = horse.offsetLeft;
+	var xpos3 = horse.offsetLeft;
+	var xpos4 = horse.offsetLeft;
+	var xpos5 = horse.offsetLeft;
+	var xpos6 = horse.offsetLeft;
+	
+	//var xpos = parseInt(horse.style.left.replace('px', ''), 10)
+	
+		mspeed1 = randomInteger(7,10);
+		mspeed2 = randomInteger(7,10);
+		mspeed3 = randomInteger(7,10);
+		mspeed4 = randomInteger(7,10);
+		mspeed5 = randomInteger(7,10);
+		mspeed6 = randomInteger(7,10);
+		
+	mymove1 = setInterval(function(){ moveHorse1(); },500/mspeed1);
+	mymove2 = setInterval(function(){ moveHorse2(); },500/mspeed2);
+	mymove3 = setInterval(function(){ moveHorse3(); },500/mspeed3);
+	mymove4 = setInterval(function(){ moveHorse4(); },500/mspeed4);
+	mymove5 = setInterval(function(){ moveHorse5(); },500/mspeed5);
+	mymove6 = setInterval(function(){ moveHorse6(); },500/mspeed6);
+			}
+	
+	}
+	function moveHorse1(){
+		
+		var whomoves = Math.floor(Math.random() * 10);
+		
+		var ahorse = document.getElementById("horse0" );
+		xpos1 = ahorse.offsetLeft;
+		xpos1 += .1 + whomoves;
+		ahorse.style.left = xpos1 + "px";
+		if (xpos1 > document.getElementById('gameView').clientWidth)
+			{
+				stopRace("horse0");
+			}
+	
+		
+	}
+	
+		function moveHorse2(){
+		
+		var whomoves = Math.floor(Math.random() * 10);
+		
+		var ahorse = document.getElementById("horse1" );
+		xpos2 = ahorse.offsetLeft;
+		xpos2 += .1 + whomoves;
+		ahorse.style.left = xpos2 + "px";
+	if (xpos2 > document.getElementById('gameView').clientWidth)
+			{
+				stopRace("horse1");
+			}
+		
+	}
+		
+	
+		
+	function moveHorse3(){
+		
+		var whomoves = Math.floor(Math.random() * 10);
+		
+		var ahorse = document.getElementById("horse2");
+		xpos3 = ahorse.offsetLeft;
+		xpos3 += .1 + whomoves;
+		ahorse.style.left = xpos3 + "px";
+	if (xpos3 > document.getElementById('gameView').clientWidth)
+			{
+				stopRace("horse2");
+			}
+		
+	}
+	
+		function moveHorse4(){
+		
+		var whomoves = Math.floor(Math.random() * 10);
+		
+		var ahorse = document.getElementById("horse3" );
+		xpos4 = ahorse.offsetLeft;
+		xpos4 += .1 + whomoves;
+		ahorse.style.left = xpos4 + "px";
+	if (xpos4 > document.getElementById('gameView').clientWidth)
+			{
+				stopRace("horse3");
+			}
+		
+	}
+		
+		
+	function moveHorse5(){
+		
+		var whomoves = Math.floor(Math.random() * 10);
+		
+		var ahorse = document.getElementById("horse4" );
+		xpos5 = ahorse.offsetLeft;
+		xpos5 += .1 + whomoves;
+		ahorse.style.left = xpos5 + "px";
+	if (xpos5 > document.getElementById('gameView').clientWidth)
+			{
+				stopRace("horse4");
+			}
+		
+	}
+	
+		function moveHorse6(){
+		
+		var whomoves = Math.floor(Math.random() * 10);
+		
+		var ahorse = document.getElementById("horse5" );
+		xpos6 = ahorse.offsetLeft;
+		xpos6 += .1 + whomoves;
+		ahorse.style.left = xpos6 + "px";
+	if (xpos6 > document.getElementById('gameView').clientWidth)
+			{
+				stopRace("horse5");
+			}
+		
+	}
+		
+	
+	
+	
+	
+</script>
+	
+	
+</body>
+	
+	
+</html>
+
+

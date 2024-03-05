@@ -1,0 +1,59 @@
+@charset "UTF-8";
+/* CSS Document */
+
+body
+  {
+    margin: 0;
+	 
+  }
+
+input[type="radio"] {
+    -ms-transform: scale(2); /* IE 9 */
+    -webkit-transform: scale(2); /* Chrome, Safari, Opera */
+    transform: scale(1.5);
+	
+	align-items: center;
+	vertical-align: middle;
+}
+
+  #page
+  {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+  height: 100%;
+	  margin-bottom: 0;
+	  
+  }
+  #top_bar
+  {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100px;
+ 
+    background-color: #369;
+    color: #fff;
+  }
+  #game
+  {
+    position: absolute;
+    left: 0px;
+    top: 70px;
+    width: 1000px;
+  height: 620px;
+    background-color: #fff;
+    clip: auto;
+  overflow: hidden;
+  }
+  #footer_bar
+  {
+    position: absolute;
+    left: 0;
+    vertical-align: bottom;
+    width: 1000px;
+  height: 100px;
+    background-color: #369;
+  }
+

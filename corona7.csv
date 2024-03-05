@@ -1,0 +1,175 @@
+Country,Country Code,"Total
+Cases","New
+Cases","Total
+Deaths","New
+Deaths","Total
+Recovered","Active
+Cases","Serious
+Critical",Tot Cases 1M pop
+Afghanistan,AF,24,,,,1,23,,0.6
+Albania,AL,76,,2,,2,72,2,26
+Algeria,DZ,139,,15,,65,59,,3
+Andorra,AD,88,,,,1,87,2,1139
+Angola,AO,2,,,,,2,,0.06
+Argentina,AR,225,67,4,,27,194,,5
+Armenia,AM,160,,,,1,159,2,54
+Aruba,AW,5,,,,1,4,,47
+Australia,AU,1286,214,7,,46,1233,2,50
+Austria,AT,2992,,8,,9,2975,15,332
+Azerbaijan,AZ,53,,1,,11,41,,5
+Bahamas,BS,4,,,,,4,,10
+Bahrain,BH,310,,1,,125,184,4,182
+Bangladesh,BD,24,,2,,3,19,,0.1
+Barbados,BB,14,,,,,14,,49
+Belarus,BY,76,,,,15,61,,8
+Belgium,BE,2815,,67,,263,2485,288,243
+Benin,BJ,2,,,,,2,,0.2
+Bermuda,BM,2,,,,,2,,32
+Bhutan,BT,2,,,,,2,,3
+Bolivia,BO,19,,,,,19,,2
+Bosnia and Herzegovina,BA,93,,1,,2,90,1,28
+Brazil,BR,1178,,18,,2,1158,18,6
+Brunei,BN,83,,,,1,82,2,190
+Bulgaria,BG,163,,3,,3,157,3,23
+Burkina Faso,BF,64,,3,,5,56,,3
+Cabo Verde,CV,3,,,,,3,,5
+Cambodia,KH,53,,,,2,51,,3
+Cameroon,CM,40,,,,2,38,,2
+Canada,CA,1328,,19,,14,1295,1,35
+CAR,CF,3,,,,,3,,0.6
+Cayman Islands,KY,3,,1,,,2,,46
+Channel Islands,UU,32,,,,,32,,184
+Chile,CL,537,,1,,8,528,7,28
+China,CN,81054,46,3261,6,72440,5353,1845,56
+Colombia,CO,196,,,,2,194,,4
+Congo,CG,3,,,,,3,,0.5
+Costa Rica,CR,117,,2,,2,113,2,23
+Croatia,HR,206,,1,,5,200,,50
+Cuba,CU,21,,1,,,20,,2
+Curaçao,CW,3,,1,,,2,,18
+Cyprus,CY,84,,1,,3,80,3,70
+Czechia,CZ,995,,,,6,989,7,93
+Denmark,DK,1326,,13,,1,1312,42,229
+Diamond Princess,DP,712,,8,,567,137,15,
+Dominican Republic,DO,112,,3,,,109,,10
+DRC,CD,23,,1,,,22,,0.3
+Ecuador,EC,532,,7,,3,522,2,30
+Egypt,EG,294,,10,,42,242,,3
+El Salvador,SV,3,,,,,3,,0.5
+Equatorial Guinea,GQ,6,,,,,6,,4
+Estonia,EE,306,,,,2,304,,231
+Ethiopia,ET,9,,,,,9,,0.08
+Faeroe Islands,FO,92,,,,3,89,,1883
+Fiji,FJ,2,,,,,2,,2
+Finland,FI,523,,1,,10,512,2,94
+France,FR,14459,,562,,1587,12310,1525,222
+French Guiana,GF,18,,,,,18,,60
+French Polynesia,PF,15,,,,,15,,53
+Gabon,GA,5,,1,,,4,,2
+Georgia,GE,49,,,,1,48,1,12
+Germany,DE,22364,,84,,209,22071,2,267
+Ghana,GH,21,,1,,,20,,0.7
+Gibraltar,GI,10,,,,2,8,,297
+Greece,GR,530,,13,,19,498,18,51
+Greenland,GL,2,,,,,2,,35
+Guadeloupe,GP,56,,1,,,55,4,140
+Guam,GU,15,,,,,15,,89
+Guatemala,GT,17,,1,,,16,,0.9
+Guyana,GY,18,,1,,,17,,23
+Honduras,HN,24,,,,,24,,2
+Hong Kong,HK,274,,4,,100,170,4,37
+Hungary,HU,103,,4,,7,92,6,11
+Iceland,IS,473,,1,,5,467,1,1386
+India,IN,332,,5,,23,304,,0.2
+Indonesia,ID,450,,38,,20,392,,2
+Iran,IR,20610,,1556,,7635,11419,,245
+Iraq,IQ,214,,17,,51,146,,5
+Ireland,IE,785,,3,,5,777,13,159
+Israel,IL,883,,1,,36,846,15,102
+Italy,IT,53578,,4825,,6072,42681,2857,886
+Ivory Coast,CI,14,,,,1,13,,0.5
+Jamaica,JM,19,,1,,2,16,,6
+Japan,JP,1054,,36,,215,803,55,8
+Jordan,JO,100,,,,1,99,,10
+Kazakhstan,KZ,54,,,,,54,,3
+Kenya,KE,7,,,,,7,,0.1
+Kuwait,KW,176,,,,27,149,5,41
+Kyrgyzstan,KG,14,,,,,14,,2
+Latvia,LV,124,,,,1,123,,66
+Lebanon,LB,230,,4,,8,218,4,34
+Liberia,LR,3,,,,,3,,0.6
+Liechtenstein,LI,37,,,,,37,,970
+Lithuania,LT,99,,1,,1,97,1,36
+Luxembourg,LU,670,,8,,6,656,3,1070
+Macao,MO,19,,,,10,9,,29
+Madagascar,MG,3,,,,,3,,0.1
+Malaysia,MY,1183,,8,,114,1061,26,37
+Maldives,MV,13,,,,3,10,,24
+Malta,MT,73,,,,2,71,1,165
+Martinique,MQ,37,,1,,,36,7,99
+Mauritius,MU,14,,1,,,13,,11
+Mayotte,YT,11,,,,,11,,40
+Mexico,MX,251,48,2,,4,245,1,2
+Moldova,MD,80,,1,,1,78,3,20
+Monaco,MC,18,,,,1,17,,459
+Mongolia,MN,10,,,,,10,,3
+Montenegro,ME,16,,,,,16,,25
+Morocco,MA,96,,3,,3,90,1,3
+Namibia,NA,3,,,,,3,,1
+Netherlands,NL,3631,,136,,2,3493,354,212
+New Caledonia,NC,4,,,,,4,,14
+New Zealand,NZ,66,14,,,,66,,14
+Nigeria,NG,22,,,,1,21,,0.1
+North Macedonia,MK,85,,,,1,84,1,41
+Norway,NO,2164,,7,,6,2151,28,399
+Oman,OM,52,,,,13,39,,10
+Pakistan,PK,645,,3,,13,629,,3
+Palestine,PS,53,,,,17,36,,10
+Panama,PA,245,,3,,1,241,7,57
+Paraguay,PY,22,,1,,,21,1,3
+Peru,PE,318,,5,,1,312,5,10
+Philippines,PH,380,73,25,6,15,340,1,3
+Poland,PL,536,,5,,13,518,3,14
+Portugal,PT,1280,,12,,5,1263,26,126
+Puerto Rico,PR,21,,1,,,20,,7
+Qatar,QA,481,,,,27,454,6,167
+Réunion,RE,47,,,,,47,,52
+Romania,RO,367,,,,52,315,14,19
+Russia,RU,306,,1,,16,289,,2
+Rwanda,RW,17,,,,,17,,1
+S. Korea,KR,8897,98,104,2,2909,5884,59,174
+Saint Martin,MF,5,,,,,5,,129
+San Marino,SM,160,,20,,4,136,12,4715
+Saudi Arabia,SA,392,,,,16,376,,11
+Senegal,SN,56,,,,5,51,,3
+Serbia,RS,171,,1,,2,168,4,20
+Seychelles,SC,7,,,,,7,,71
+Singapore,SG,432,,2,,140,290,14,74
+Slovakia,SK,178,,,,7,171,2,33
+Slovenia,SI,383,,1,,,382,12,184
+South Africa,ZA,240,,,,2,238,,4
+Spain,ES,25496,,1381,,2125,21990,1612,545
+Sri Lanka,LK,77,,,,3,74,2,4
+St. Barth,BL,3,,,,,3,,304
+Sudan,SD,2,,1,,,1,,0.05
+Suriname,SR,5,,,,,5,,9
+Sweden,SE,1770,,20,,16,1734,71,175
+Switzerland,CH,6863,,80,,131,6652,141,793
+Taiwan,TW,153,,2,,28,123,,6
+Tanzania,TZ,6,,,,,6,,0.1
+Thailand,TH,411,,1,,44,366,7,6
+Togo,TG,16,,,,,16,,2
+Trinidad and Tobago,TT,49,,,,,49,,35
+Tunisia,TN,60,,1,,1,58,7,5
+Turkey,TR,947,,21,,,926,,11
+U.S. Virgin Islands,VI,6,,,,,6,,57
+UAE,AE,153,,2,,38,113,2,15
+UK,GB,5018,,233,,93,4692,20,74
+Ukraine,UA,47,,3,,1,43,,1
+Uruguay,UY,135,25,,,,135,2,39
+USA,US,26863,2656,348,46,178,26337,64,81
+Uzbekistan,UZ,41,,,,,41,,1
+Venezuela,VE,70,,,,15,55,2,2
+Vietnam,VN,94,,,,17,77,2,1.0
+Zimbabwe,ZW,3,,,,,3,,0.2
+Total,,308201,3241,13067,60,95825,199309,9299,21549.49

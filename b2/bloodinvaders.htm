@@ -1,0 +1,138 @@
+<!doctype html>
+<head><title>Blood Invaders</title>
+<style>
+canvas {
+   image-rendering: -moz-crisp-edges;
+  image-rendering: -webkit-crisp-edges;
+  image-rendering: pixelated;  
+image-rendering: crisp-edges;
+background:black;
+width:800px;
+height: 600px;
+}
+</style>
+
+<script src = "Invader.js"></script>
+<script src = "Barricade.js"></script>
+<script src = "Ship.js"></script>
+<script src = "MotherShip.js"></script>
+</head>
+<body>
+<img src = "invader1.png" id="invader1" style = "display:none"/>
+<img src = "invader2.png" id="invader2" style = "display:none"/>
+<img src = "invader3.png" id="invader3" style = "display:none"/>
+<img src = "invader4.png" id="invader4" style = "display:none"/>
+<img src = "invader5.png" id="invader5" style = "display:none"/>
+<img src = "invader6.png" id="invader6" style = "display:none"/>
+<div style="width:100%; height:100%">
+<canvas id = "gamescreen" ></canvas>
+</div>
+</body>
+
+
+
+
+
+<script>
+//Draw Board
+
+
+
+
+var agamescreen = document.getElementById("gamescreen");
+
+     let style = {
+    height() {
+      return +getComputedStyle(agamescreen).getPropertyValue('height').slice(0,-2);
+    },
+    width() {
+      return +getComputedStyle(agamescreen).getPropertyValue('width').slice(0,-2);
+    }
+  }
+
+       this.dpi = window.devicePixelRatio;
+//set the correct attributes for a crystal clear image!
+     this.dpi = window.devicePixelRatio;
+
+  agamescreen.setAttribute('width', style.width() * this.dpi);
+  agamescreen.setAttribute('height', style.height() * this.dpi);
+
+
+
+
+
+
+
+
+var boardpen = agamescreen.getContext("2d");
+boardpen.imageSmoothingEnabled = false;
+
+
+var myscorepane = new Image();
+myscorepane.src = "scorepane.png";
+
+var mothership = new MotherShip(0, agamescreen.width/20);
+mothership.src = "invader6.png";
+
+var ship = new Ship(agamescreen.width/3, agamescreen.height - agamescreen.width/20);
+
+var buildings = new Image();
+buildings.src = "buildings.png";
+
+
+
+var invaderArray = [];
+for (j=1; j<6; j++){
+for(i=0; i < 10; i++){
+let aninvader = new Invader(j,i*agamescreen.width/20*1.3,agamescreen.width/10+j*agamescreen.width/20*1.3);
+invaderArray.push(aninvader);
+}
+}
+
+var barricadeArray = [];
+for (b=1; b< 5; b++)
+{
+  let abarricade = new Barricade(b*screen.width/5, screen.height-screen.width/20);
+barricadeArray.push(abarricade);
+}
+
+
+setTimeout(showGameScreen, 5000);
+
+function showGameScreen(){
+//draw backdrop
+
+boardpen.globalAlpha = 0.5;
+boardpen.drawImage(buildings,0,0,agamescreen.width,agamescreen.height);
+boardpen.globalAlpha = 1.0;
+
+
+//draw score pane
+boardpen.drawImage(myscorepane,agamescreen.width*.65,0);
+
+//draw mothership
+mothership.drawMotherShip();
+
+
+//draw ship
+ship.drawShip();
+
+
+//draw barricades
+for (i=0; i < barricadeArray.length; i++)
+{
+
+barricadeArray[i].drawBarricade();
+
+}
+
+
+
+//draw invaders
+for(i=0; i < invaderArray.length; i++){
+invaderArray[i].drawInvader();
+}
+}
+</script>
+
+</html>

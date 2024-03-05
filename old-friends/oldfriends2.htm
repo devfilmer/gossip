@@ -1,0 +1,47 @@
+
+<html>
+
+
+
+<head>
+<script>
+function showSet1()
+{
+	var thescreen = document.getElementById("myscreen");
+	
+	thescreen.src = "https://www.youtube.com/embed/MakyZwVEb0E?autoplay=1&showinfo=0&modestbranding=1&mute=1"
+	
+}	
+
+
+function mySubscribe() {
+  var win = window.open("https://www.youtube.com/channel/UC-Rx64xwAzxLDdnxAb4pWqA?sub_confirmation=1", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=0,left=0,width=400,height=400");
+  
+  var timer = setInterval(function() { 
+    if(win.closed) {
+        clearInterval(timer);
+        alert('lets do this');
+    }
+}, 1000);
+
+}
+</script>
+</head>
+
+<body>
+<h1>Old Friends</h1>
+
+<iframe id = "myscreen" width="400" height="225" src="https://www.youtube.com/embed/R4nmr52A1fw?showinfo=0&modestbranding=1&autoplay=1&mute=1" type="video/mp4">
+</iframe><br>
+It's been raining forever.  It seems like forever since you've eaten.  You're locked out and don't know what to do.  You can see the rain drops glistening on the deck as your stomach continues to churn away.  You've got to get something to eat before you pass out.  What do you want to do?<br><br>
+<!--
+<a href = "https://www.youtube.com/channel/UC-Rx64xwAzxLDdnxAb4pWqA?sub_confirmation=1">Subscribe Now and Play!</a>
+
+<button onclick="mySubscribe()">Subscribe Now And Play</button>
+<br><br>-->
+<button onclick="showSet1()">Look around</button><br><br>
+<button>Yell</button><br><br>
+<button>Go To Sleep</button><br><br>
+</body>
+</html>
+

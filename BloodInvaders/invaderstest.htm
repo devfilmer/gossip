@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Space Invaders</title>
+    <style>
+      #gameCanvas {
+        background-color: #000;
+        margin: 0 auto;
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="gameCanvas" width="480" height="320"></canvas>
+
+    <script>
+      const canvas = document.getElementById("gameCanvas");
+      const ctx = canvas.getContext("2d");
+
+      // Player variables
+      const playerWidth = 20;
+      const playerHeight = 10;
+      let playerX = canvas.width / 2 - playerWidth / 2;
+      const playerY = canvas.height - playerHeight - 10;
+      let playerSpeed = 5;
+
+      // Keyboard controls
+      let leftPressed = false;
+      let rightPressed = false;
+
+      // Event listeners for keyboard controls
+      document.addEventListener("keydown", keyDownHandler);
+      document.addEventListener("keyup", keyUpHandler);
+
+      function keyDownHandler(event) {
+        if (event.key === "Left" || event.key === "ArrowLeft") {
+          leftPressed = true;
+        } else if (event.key === "Right" || event.key === "ArrowRight") {
+          rightPressed = true;
+        }
+      }
+
+      function keyUpHandler(event) {
+        if (event.key === "Left" || event.key === "ArrowLeft") {
+          leftPressed = false;
+        } else if (event.key === "Right" || event.key === "ArrowRight") {
+          rightPressed = false;
+        }
+      }
+
+      function drawPlayer() {
+        ctx.beginPath();
+        ctx.rect(playerX, playerY, playerWidth, playerHeight);
+        ctx.fillStyle = "#00ff00";
+        ctx.fill();
+        ctx.closePath();
+      }
+
+      function movePlayer() {
+        if (leftPressed && playerX > 0) {
+          playerX -= playerSpeed;
+        } else if (rightPressed && playerX + playerWidth < canvas.width) {
+          playerX += playerSpeed;
+        }
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawPlayer();
+        movePlayer();
+        requestAnimationFrame(draw);
+      }
+
+      draw();
+    </script>
+  </body>
+</html>

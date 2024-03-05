@@ -1,0 +1,4 @@
+[25-Feb-2024 04:39:21 UTC] PHP Fatal error:  Class 'PHPMailer' not found in /home/z9dtcj87zoql/public_html/gossip/pigfarmlife/welcome.php on line 63
+[25-Feb-2024 04:41:50 UTC] PHP Fatal error:  Class 'PHPMailer' not found in /home/z9dtcj87zoql/public_html/gossip/pigfarmlife/welcome.php on line 63
+[25-Feb-2024 07:37:20 UTC] PHP Notice:  Undefined index: email in /home/z9dtcj87zoql/public_html/gossip/pigfarmlife/welcome.php on line 40
+[25-Feb-2024 07:37:20 UTC] PHP Notice:  Undefined index: email in /home/z9dtcj87zoql/public_html/gossip/pigfarmlife/welcome.php on line 54

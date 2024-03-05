@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<style>
+#myContainer {
+  width: 400px;
+  height: 300px;
+  position: relative;
+ 
+  background-repeat: no-repeat;
+}
+#myAnimation {
+  width: 400px;
+  height: 300px;
+  position: absolute;
+  
+}
+</style>
+<body>
+
+<p>
+<button onclick="myMove()">Click Me</button> 
+</p>
+	<div><h1>Rhinestone</h1><br></div>
+<div id ="myContainer" style="background-image: url('forest2.png');">
+<div id ="myAnimation"><img id="encounter" src="wizard2.png"/></div>
+</div>
+
+  <div id = "story" style="width:400px"><h3>You're within an enchanted forest and encounter Maltizo the Evil Wizard.  What do you want to do?</h3></div><br>
+
+    <div id = "controls"><img src="run.png"/><img src="fight.png"/></div>
+
+
+
+<script>
+function myMove() {
+  var elem = document.getElementById("myAnimation");   
+  var pos = 0;
+  var id = setInterval(frame, 10);
+  function frame() {
+    if (pos == 100) {
+      clearInterval(id);
+    } else {
+      pos++; 
+      //elem.style.top = pos + 'px'; 
+      elem.style.left = pos + 'px'; 
+    }
+  }
+}
+	
+	myMove();
+</script>
+
+</body>
+</html>

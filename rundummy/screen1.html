@@ -1,0 +1,258 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="viewport" content="width=device-width,initial-scale=1.5,user-scalable=no">
+
+<title>Untitled Document</title>
+<style>
+	
+	body {margin: 0; height: 100%; overflow-x: hidden; overflow-y:hidden}
+	
+	#gamescreen {
+		font-size: 50px;
+		width: 100vw;
+		height: 100vh;
+		z-index: 0;
+		
+		position: absolute;
+		overflow-x: hidden; overflow-y:hidden
+	    
+	}
+	
+	#background1{
+		
+		width: 200vw;
+		height: 90vh;
+		z-index: 0;
+		left: 0px;
+		top: 0px;
+		position: absolute;
+		margin: 0; 
+		overflow-x: hidden; overflow-y:hidden
+		
+		
+	}
+	#trump{
+		width: 15vw;
+		height: 15vw;
+		z-index: 3;
+		left: 20vw;
+		top: 33vw;
+		position: absolute;
+		
+	}
+	#trumponboard{
+		width: 100%;
+		height: 100%;
+	
+		left: 0;
+		top: 0;
+		
+		
+	}
+	
+	#duck{
+		width: 15vw;
+		height: 15vw;
+		z-index: 3;
+		left: 0vw;
+		top: 33vw;
+		position: absolute;
+		
+	}
+	#duckbtn{
+		width: 100%;
+		height: 100%;
+	
+		left: 0;
+		top: 0;
+		
+		
+	}
+	
+	#jump{
+		width: 15vw;
+		height: 15vw;
+		z-index: 3;
+		left: 0vw;
+		top: 15vw;
+		position: absolute;
+		
+	}
+	#jumpbtn{
+		width: 100%;
+		height: 100%;
+	
+		left: 0;
+		top: 0;
+		
+		
+	}
+	
+	#shoot{
+		width: 15vw;
+		height: 15vw;
+		z-index: 3;
+		left: 85vw;
+		top: 33vw;
+		position: absolute;
+		
+	}
+	#shootbtn{
+		width: 100%;
+		height: 100%;
+	
+		left: 0;
+		top: 0;
+		
+		
+	}
+	
+	#background2{
+		
+		width: 200vw;
+		height: 90vh;
+		z-index: 0;
+		left: 200vw;
+		top: 0px;
+		position: absolute;
+		margin: 0; 
+		overflow-x: hidden; overflow-y:hidden
+		
+		
+	}
+	#background1img{
+		/*background-image: url(dcback.png);*/
+		width: 200vw;
+		height: 100vh;
+		z-index: 0;
+	
+ /* background-size: cover;*/
+		position: absolute;
+		left: 0;
+	}
+	
+	
+	#background2img{
+		/*background-image: url(dcback.png);*/
+		width: 200vw;
+		height: 100vh;
+		z-index: 0;
+	
+ /* background-size: cover;*/
+		position: absolute;
+		left: 0;
+	}
+</style>
+</head>
+
+<body>
+	<div id="gamescreen"></div>
+	<div id="background1"><img id = "background1img" src = "dcback.png" style="top:0px;left:0px"/></div>
+	<div id="background2"><img id = "background2img" src = "dcback.png"/></div>
+	<div id="trump"><img id = "trumponboard" src = "trumponboard.png" /></div>
+	
+	<div id="jump"><img id = "jumpbtn" src = "jump.png" onclick="doJump()"/></div>
+	<div id="duck"><img id = "duckbtn" src = "duck.png" /></div>
+	<div id="shoot"><img id = "shootbtn" src = "shoot.png" /></div>
+	
+	<script>
+		setInterval(function(){moveback();},5);
+	</script>
+	<script>
+	var newposx = 0;
+	var myback1 = document.getElementById("background1");
+	var myback2 = document.getElementById("background2");
+	var verticaldirection = 1;
+	var jumptimer;
+	var trumphigh;
+	var gravity = -180;
+	var jumpcount= 0;
+	var jumping = false;
+	var highpoint = screen.height *0.05;	
+		/*
+	window.addEventListener("load",function() {
+		setTimeout(function(){
+			// This hides the address bar:
+			window.scrollTo(0,0);
+		}, 0);
+	});
+	*/
+		
+	function noScroll() {
+	  window.scrollTo(0, 0);
+	}
+	window.addEventListener('scroll', noScroll);
+	
+	
+	function moveback()
+		{
+			//alert('ya');
+			var leftPos = parseInt(myback1.offsetLeft, 10);
+		
+			leftPos -= 1;
+				//alert(leftPos);
+			myback1.style.left = leftPos + "px";
+
+				var leftPos2 = parseInt(myback2.offsetLeft, 10);
+
+			leftPos2 -= 1;
+				//alert(leftPos);
+			myback2.style.left = leftPos2 + "px";
+			
+			if (leftPos == parseInt(myback1.offsetWidth) * -1)
+				{
+					myback1.style.left = parseInt(myback1.offsetWidth) * 1 + "px";
+				}
+			
+			if (leftPos2 == parseInt(myback2.offsetWidth) * -1)
+				{
+					myback2.style.left = parseInt(myback2.offsetWidth) * 1 +"px";
+				}
+		}
+	    function goJump(starttop){
+			trumphigh = starttop; 
+			
+			var trumpjump = document.getElementById("trump");
+			//var highpoint = starttop - parseInt(trumpjump.offsetHeight);
+			//var highpoint = screen.height * 0.1;
+			var y = parseInt(trumpjump.offsetTop,10);
+			y -= 3 * verticaldirection + gravity/500;
+			trumpjump.style.top = y + "px";
+			if (y < highpoint)
+				{
+					verticaldirection *= -1;
+				}
+			
+			if (verticaldirection == -1){
+				if (parseInt(trumpjump.offsetTop)>=document.getElementById("gamescreen").offsetHeight*.65)
+					{
+						clearInterval(jumptimer);
+						//trumpjump.style.top = starttop + "px";
+						verticaldirection *= -1;
+						gravity = 0;
+						//alert(jumpcount);
+						jumpcount = 0;
+						gravity = -180;
+						jumping = false;
+						document.getElementById("jumpbtn").disabled = false;
+						
+					}
+			}
+			gravity += 1;
+			jumpcount += 1
+		}
+	    function doJump() {
+			
+			document.getElementById("jumpbtn").disabled = true;
+			if (jumping == false){
+			jumptimer = setInterval(function(){goJump(document.getElementById("trump").offsetTop)}, 10);
+		    }
+			jumping = true;
+		}
+	</script>
+	
+</body>
+</html>
